@@ -32,7 +32,7 @@ export async function login({ username, password }: { username: string; password
       { $set: { token: token } }
     );
     if (insertTokenResult.acknowledged && insertTokenResult.modifiedCount == 1) {
-      return { _id: user._id, token: token };
+      return { id: user._id, token: token };
     }
     return [500, "login error"];
   }

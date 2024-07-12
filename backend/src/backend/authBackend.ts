@@ -35,12 +35,12 @@ export async function loginUserBackend(req: Request, res: Response) {
 export async function authorize(headers: json) {
   const validationResult = Joi.object({
     token: jString.required(),
-    _id: jObjectId.required(),
+    id: jObjectId.required(),
   })
     .unknown()
     .validate(headers);
   if (validationResult.error === undefined) {
-    return await db.userToken(headers._id, headers.token);
+    return await db.userToken(headers.id, headers.token);
   } else {
     console.log(JSON.stringify(validationResult.error.message));
     return false;
