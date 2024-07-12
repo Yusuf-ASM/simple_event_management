@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../backend/shared_variables.dart';
 
-dynamic snackBar(String message, BuildContext context, {int duration = 2000}) {
+dynamic snackBar(dynamic message, BuildContext context, {int duration = 2000}) {
   return ScaffoldMessenger.of(context).showSnackBar(
     SnackBar(
       duration: Duration(milliseconds: duration),

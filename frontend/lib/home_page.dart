@@ -4,14 +4,6 @@ import 'backend/shared_variables.dart';
 import 'components/text_fields.dart';
 import 'pages_backend/home.dart';
 
-Map hackerData = {
-  "id": "0",
-  "name": "potato",
-  "email": "potato@pomato.tomato",
-  "phone": "01026000000",
-  "nationalID": "p0tat0",
-};
-
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -21,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final id = TextEditingController();
+  List<TableRow> hackerData = [];
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -38,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                   Row(
                     children: [
                       Flexible(
-                          flex: 2,
+                        flex: 2,
                         child: SignInTextField(
                           hintText: "Hacker ID",
                           controller: id,
@@ -47,8 +40,12 @@ class _HomePageState extends State<HomePage> {
                             context: context,
                             data: (data) {
                               data.remove("_id");
-                              hackerData = data;
-                              setState(() {});
+                              hackerData.clear();
+                              hackerData = hackerDataTable(
+                                data,
+                                context,
+                                () => setState(() {}),
+                              );
                             },
                           ),
                         ),
@@ -62,8 +59,12 @@ class _HomePageState extends State<HomePage> {
                             context: context,
                             data: (data) {
                               data.remove("_id");
-                              hackerData = data;
-                              setState(() {});
+                              hackerData.clear();
+                              hackerData = hackerDataTable(
+                                data,
+                                context,
+                                () => setState(() {}),
+                              );
                             },
                           ),
                         ),
@@ -83,16 +84,12 @@ class _HomePageState extends State<HomePage> {
                   ConstrainedBox(
                     constraints: BoxConstraints(maxWidth: width * 0.7),
                     child: Table(
-                      border: TableBorder.all(
-                        width: 2,
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      children: hackerDataTable(
-                        hackerData,
-                        context,
-                      ),
-                    ),
+                        border: TableBorder.all(
+                          width: 2,
+                          color: Colors.blue,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        children: hackerData),
                   )
                 ],
               ),

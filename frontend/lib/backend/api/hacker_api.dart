@@ -41,7 +41,6 @@ Future<List> updateHackerCheckList(dynamic id, Map body) async {
     } else {
       print("updateHackerCheckList $error");
     }
-    print(response);
     return response;
   }
 }

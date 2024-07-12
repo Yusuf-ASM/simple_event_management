@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:simple_event_management/backend/shared_variables.dart';
 import 'package:simple_event_management/login_page.dart';
 
 void main(List<String> args) async {
@@ -11,6 +12,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: ThemeData(colorSchemeSeed: mainColor),
       debugShowCheckedModeBanner: false,
       home: LoginPage(),
     );

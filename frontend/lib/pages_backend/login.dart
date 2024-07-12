@@ -1,5 +1,4 @@
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:simple_event_management/home_page.dart';
 
 import '../backend/api/auth_api.dart';
@@ -23,7 +22,7 @@ Future<void> loginButton({
         organizerCredentials = response[1];
         Navigator.of(context).pushAndRemoveUntil(
           CupertinoPageRoute(
-            builder: (context) => HomePage(),
+            builder: (context) => const HomePage(),
           ),
           (route) => false,
         );

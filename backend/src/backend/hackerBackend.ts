@@ -11,7 +11,12 @@ export async function getHackerBackend(req: Request, res: Response) {
   const validationResult = jHackerID.validate(id);
 
   if (validationResult.error === undefined) {
-    res.json(await db.getHackerData(id));
+    const response = await db.getHackerData(id);
+    if (response == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(response);
+    }
   } else {
     console.log(JSON.stringify(validationResult.error.message));
     res.status(400).send({ error: validationResult.error.message });

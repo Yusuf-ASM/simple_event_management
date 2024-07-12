@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:simple_event_management/backend/api/hacker_api.dart';
 import 'package:simple_event_management/components/switches.dart';
@@ -55,20 +54,23 @@ TableCell dataCell(String text) {
   );
 }
 
-List<TableRow> hackerDataTable(Map json, BuildContext context) {
+List<TableRow> hackerDataTable(Map json, BuildContext context, VoidCallback update) {
   List<TableRow> output = [];
   for (var key in json.keys) {
     if (key != "checkList") {
       output.add(TableRow(children: [labelCell(key), dataCell(json[key].toString())]));
     }
   }
+
   if (json["checkList"] != null) {
     for (var key in json["checkList"].keys) {
+      print(json["checkList"][key]);
       output.add(TableRow(children: [
         labelCell(key),
-        CustomSwitch(initialValue: json["checkList"][key], json: json, jsonKey: key)
+        customSwitch(json["id"].toString(), json["checkList"], key, update)
       ]));
     }
   }
+
   return output;
 }

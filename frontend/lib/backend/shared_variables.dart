@@ -7,7 +7,7 @@ const HackerBackendLink =
     Testing ? "http://127.0.0.1:8080/hacker" : "https://smartapi.nu.edu.eg/hacker";
 
 Stream? stream;
-const Version = "V1.0.0";
+const Version = "V1.0.1";
 const Testing = false;
 const TextFieldBorderRadius = 15.0;
 const NormalTextSize = 16.0;
