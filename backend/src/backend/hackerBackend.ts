@@ -34,7 +34,6 @@ export async function updateHackerBackend(req: Request, res: Response) {
   if (validationResult.error === undefined) {
     const id = Number.parseInt(body.id);
     const checkList = body.checkList;
-    console.log({ id: id, checkList: checkList });
 
     res.json({ result: await db.hackerUpdateCheckList(id, checkList) });
   } else {

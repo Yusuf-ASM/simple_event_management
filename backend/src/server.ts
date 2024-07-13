@@ -30,23 +30,7 @@ app.all("*", (req, res) => {
 });
 
 app.listen(PORT, async () => {
-  // console.log(utility.hashPassword("pomato"));  
-  // const hacker = {
-  //   id: 15,
-  //   name: "yusuf",
-  //   email: "y.alsayed@nu.edu.eg",
-  //   phone: "010",
-  //   nationalID: "303",
-  //   checkList: { attended: false, "lunch-day1": false, "lunch-day2": false },
-  // };
-  // const organizer: organizer = {
-  //   username: "potato",
-  //   password: "pomato",
-  //   token: "",
-  // };  
-  // db.insertOrganizer(organizer);
-  // db.insertHacker(hacker);
   await db.createIndexes();
-  console.log("Running: 8080");
+  console.log("Running: " + PORT);
   console.log(utility.getDate(true));
 });

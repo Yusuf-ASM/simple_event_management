@@ -21,7 +21,6 @@ export async function loginUserBackend(req: Request, res: Response) {
     let result = await db.login(body);
 
     if (Array.isArray(result)) {
-      console.log(result);
       res.status(result[0] as number).json({ error: result[1] });
     } else {
       res.json(result);
